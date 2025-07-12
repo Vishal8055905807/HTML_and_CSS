@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Libertinus+Mono&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .YTpage {
+            display: grid;
+            grid-template-columns: 1fr 7fr;
+            grid-template-rows: auto auto;
+
+        }
+
+        .toprow {
+            grid-column: 1/3;
+            position: fixed;
+            top: 0;
+            background-color: white;
+            z-index: 1;
+            
+
+
+        }
+
+        
+        .leftcolumn {
+            position: absolute;
+            top: 10vh;
+            grid-column: 1/2;
+            grid-row: 2/3;
+        }
+
+        .rightcolumn {
+            display: flex;
+            position: absolute;
+            top: 10vh;
+            left: 10vw;
+            grid-column: 2/3;
+            grid-row: 2/3;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .navbar {
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            height: 10vh;
+            flex-wrap: wrap;
+            width: 100vw;
+            
+
+
+
+
+        }
+
+        .leftnav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: row;
+            width: 200px;
+        }
+
+        .middlenav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 450px;
+        }
+
+        .rightnav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 300px;
+        }
+
+        #ytlogoinput {
+            padding-left: 15px;
+            border: 1px solid #c6c6c6;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+            height: 35px;
+            width: 300px;
+
+        }
+
+        .searchbar {
+            display: flex;
+            /* border: 1px solid gray; */
+            /* height: 50px;
+            padding: 0;
+            border-radius: 30px; */
+        }
+
+
+        .sicon {
+            height: 35px;
+            border: 1px solid #c6c6c6;
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+            width: 65px;
+            display: grid;
+            place-content: center;
+            background-color: aliceblue;
+
+        }
+
+
+        /* #logoname {
+            display: flex;
+            font-size: 19px;
+            font-family: 'Roboto';
+            justify-items: center;
+            align-items: center;
+
+        } */
+
+
+
+
+        #completelogo {
+            display: flex;
+            height: 30px;
+            width: 30px;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid white;
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+
+        }
+
+        .micicon {
+            border: 1px solid white;
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+            display: grid;
+            place-content: center;
+            background-color: aliceblue;
+
+        }
+
+
+        .create {
+            border: 1px solid white;
+            border-radius: 30px;
+            height: 35px;
+            width: 90px;
+            display: flex;
+            justify-items: center;
+            align-items: center;
+            padding-left: 10px;
+            background-color: aliceblue;
+
+        }
+
+
+
+        #createfont {
+            padding-left: 6px;
+            font-family: 'Roboto';
+
+        }
+
+        .bell {
+            border: 1px solid white;
+            border-radius: 50%;
+            height: 35px;
+            width: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        #notification {
+            border: 1px solid white;
+            border-radius: 50%;
+            background-color: red;
+            height: 17px;
+            width: 17px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Roboto';
+            font-size: 13px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .hovereff:hover {
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .sidecontent {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .sidebuttons {
+            border: 1px solid black;
+            width: 100px;
+            height: 30px;
+            margin: 10px;
+        }
+
+        .videos {
+            border: 1px solid black;
+            width: 25%;
+            height: 200px;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="YTpage">
+
+
+
+        <div class="toprow">
+
+            <div class="navbar">
+
+                <div class="leftnav">
+                    <div class="menu hovereff">
+                        <img src="https://img.icons8.com/?size=100&id=0Dz6dK7b1UiN&format=png&color=000000" alt="Menu"
+                            height="20px" width="20px">
+                    </div>
+
+                    <div id="completelogo">
+                        <div class="logoimg">
+                            <img src="https://lh3.googleusercontent.com/3zkP2SYe7yYoKKe47bsNe44yTgb4Ukh__rBbwXwgkjNRe4PykGG409ozBxzxkrubV7zHKjfxq6y9ShogWtMBMPyB3jiNps91LoNH8A=s500"
+                                alt="logo" height="60px" width="130px">
+                        </div>
+                        <!-- <div id="logoname">
+                    YouTube
+                </div> -->
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                <div class="middlenav">
+                    <div class="searchbar">
+                        <div>
+                            <input id="ytlogoinput" type="text" placeholder="Search">
+
+                        </div>
+                        <div class="sicon hovereff">
+                            <img src="https://img.icons8.com/?size=100&id=59878&format=png&color=000000" alt="search"
+                                width="25px" height="25px">
+
+                        </div>
+                    </div>
+                    <div class="micicon hovereff">
+                        <img src="https://img.icons8.com/?size=100&id=85836&format=png&color=000000" alt="mic"
+                            width="22px" height="22px">
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="rightnav">
+                    <div class="create hovereff">
+                        <img src="https://img.icons8.com/?size=100&id=3220&format=png&color=000000" alt="plus"
+                            width="20px" height="20px">
+                        <div id="createfont">Create</div>
+                    </div>
+
+                    <div class="bell hovereff">
+
+                        <div id="bellimg">
+                            <img src="https://static.vecteezy.com/system/resources/previews/022/151/493/non_2x/bell-notification-icon-symbol-image-illustration-of-the-alarm-alert-symbol-in-eps-10-vector.jpg"
+                                alt="bell" width="25px" height="25px">
+                            <div id="notification">
+                                4
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="hovereff">
+                        <img src="https://static.vecteezy.com/system/resources/previews/007/407/996/non_2x/user-icon-person-icon-client-symbol-login-head-sign-icon-design-vector.jpg"
+                            alt="login_img" width="30px" height="30px">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="leftcolumn">
+            <div class="sidecontent">
+                <div class="sidebuttons">
+                    Home
+                </div>
+                <div class="sidebuttons">
+                    Shorts
+                </div>
+                <div class="sidebuttons">
+                    Subcription
+                </div>
+                <div class="sidebuttons">
+                    History
+                </div>
+                <div class="sidebuttons">
+                    Playlists
+                </div>
+                <div class="sidebuttons">
+                    Your Videos
+                </div>
+                <div class="sidebuttons">
+                    Your Movies
+                </div>
+                <div class="sidebuttons">
+                    Watch Later
+                </div>
+                <div class="sidebuttons">
+                    Liked Videos
+                </div>
+                <div class="sidebuttons">
+                    Your Clips
+                </div>
+
+                <div class="sidebuttons">
+                    Your Movies
+                </div>
+                <div class="sidebuttons">
+                    Watch Later
+                </div>
+                <div class="sidebuttons">
+                    Liked Videos
+                </div>
+                <div class="sidebuttons">
+                    Your Clips
+                </div>
+                <div class="sidebuttons">
+                    Your Clips
+                </div>
+                <div class="sidebuttons">
+                    Your Clips
+                </div>
+                <div class="sidebuttons">
+                    Your Clips
+                </div>
+                <div class="sidebuttons">
+                    Your Clips
+                </div>
+                <div class="sidebuttons">
+                    Your Clips
+                </div>
+                <div class="sidebuttons">
+                    Your Clips
+                </div>
+                <div class="sidebuttons">
+                    Your Clips
+                </div>
+                <div class="sidebuttons">
+                    Your Clips
+                </div>
+                <div class="sidebuttons">
+                    Your Clips
+                </div>
+                <div class="sidebuttons">
+                    Your Clips
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="rightcolumn">
+
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+            <div class="videos">
+                Video
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
